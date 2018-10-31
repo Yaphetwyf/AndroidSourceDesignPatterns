@@ -45,6 +45,7 @@ public class ImageLoader {
                 if (imageView.getTag().equals(url)) {
                     updateImageView(imageView, bitmap);
                 }
+                bitmapLruCache.put(url,bitmap);
             }
         });
     }
