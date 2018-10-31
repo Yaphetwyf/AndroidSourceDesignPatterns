@@ -13,24 +13,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ImageLoader {
-    LruCache<String, Bitmap> bitmapLruCache;
+    private ImageCache imageCache;
     ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     android.os.Handler handler = new android.os.Handler(Looper.getMainLooper());
-    public ImageLoader() {
-        initIamgeCache();
-    }
-    //初始化ImageCache
-    private void initIamgeCache() {
-        //计算可使用的最大内存
-        final int MaxSize = (int) (Runtime.getRuntime().maxMemory() / 1024);
-        final int cacheSize = MaxSize / 4;
-        bitmapLruCache = new LruCache<String, Bitmap>(cacheSize) {
 
-            @Override
-            protected int sizeOf(String key, Bitmap value) {
-                return value.getRowBytes() * value.getHeight() / 1024;
-            }
-        };
+    public ImageLoader() {
+        imageCache=new ImageCache();
     }
 
     public void disPlayImage(final String url, final ImageView imageView) {
@@ -45,7 +33,7 @@ public class ImageLoader {
                 if (imageView.getTag().equals(url)) {
                     updateImageView(imageView, bitmap);
                 }
-                bitmapLruCache.put(url,bitmap);
+                imageCache.put(url,bitmap);
             }
         });
     }
