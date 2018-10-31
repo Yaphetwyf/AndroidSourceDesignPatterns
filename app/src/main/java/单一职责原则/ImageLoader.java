@@ -19,7 +19,6 @@ public class ImageLoader {
 
     public ImageLoader() {
         imageCache=new ImageCache();
-
     }
 
     public void disPlayImage(final String url, final ImageView imageView) {
