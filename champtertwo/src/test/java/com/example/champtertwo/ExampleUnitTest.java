@@ -1,4 +1,4 @@
-package com.example.a62527.designpattern;
+package com.example.champtertwo;
 
 import org.junit.Test;
 

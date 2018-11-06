@@ -1,4 +1,4 @@
-package com.example.a62527.designpattern;
+package com.example.champtertwo;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.a62527.designpattern", appContext.getPackageName());
+        assertEquals("com.example.champtertwo", appContext.getPackageName());
     }
 }
